@@ -1,0 +1,49 @@
+{
+  "name": "auto-fill-tool",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Electron desktop tool for adding registration payment rows to Excel workbooks.",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "build": "vite build",
+    "start": "electron .",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "vite": "^6.0.7",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.local.autofilltool",
+    "productName": "Excel 自動填寫工具",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "assets/icon.ico",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "assets/icon.ico",
+      "artifactName": "Excel自動填寫工具-${version}.${ext}",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "installerIcon": "assets/icon.ico"
+    }
+  }
+}
