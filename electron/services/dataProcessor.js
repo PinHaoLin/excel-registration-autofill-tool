@@ -310,7 +310,8 @@ async function addRegistrationToWorkbook(payload = {}) {
     row.getCell(7).value = entry.sessionName;
     row.getCell(8).value = entry.courseTotal;
     row.getCell(11).value = inferCourseMonth(entry.sessionName) || formatMonth(entry.paymentDate);
-    row.getCell(12).value = entry.note || null;
+    row.getCell(12).value = null;
+    row.getCell(14).value = entry.note || null;
     row.commit();
   });
 

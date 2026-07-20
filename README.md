@@ -7,6 +7,7 @@
 一般使用者請先閱讀：
 
 - [圖文使用說明](docs/使用說明.md)
+- [Word 版使用說明](docs/Excel報名資料自動填寫工具_使用說明.docx)
 
 ## 開發啟動
 
@@ -37,7 +38,8 @@ npm run dist
 | G | 課程/場次名稱 |
 | H | 課程總金額 |
 | K | 課程月份 |
-| L | 備註 |
+| L | 退款註記，工具保持空白 |
+| N | 備註 |
 
 ## 專案結構
 
@@ -52,6 +54,7 @@ src/
   styles.css
 docs/
   使用說明.md
+  Excel報名資料自動填寫工具_使用說明.docx
 index.html
 package.json
 vite.config.js
