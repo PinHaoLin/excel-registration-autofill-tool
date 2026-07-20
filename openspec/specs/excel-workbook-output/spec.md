@@ -22,6 +22,11 @@ After writing rows, the workbook SHALL request full formula recalculation when E
 
 The writer SHALL set the workbook calculation property `fullCalcOnLoad` so Excel recalculates formulas when the file is opened.
 
+### Shared Formula Safety
+The writer SHALL not fail the entire registration write when ExcelJS cannot resolve a shared formula.
+
+When a shared formula cannot be resolved, the writer SHALL preserve the cached result if available, otherwise write a blank value.
+
 ### Notes Columns
 Column L SHALL remain blank for refund notes.
 

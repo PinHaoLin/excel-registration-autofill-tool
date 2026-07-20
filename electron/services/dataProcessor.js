@@ -172,11 +172,19 @@ function adjustFormulaRows(formula, sourceRowNumber, targetRowNumber) {
   });
 }
 
+function safeGetCellFormula(cell) {
+  try {
+    return cell.formula || null;
+  } catch {
+    return null;
+  }
+}
+
 function cloneCellValue(sourceCell, targetRowNumber) {
   const value = sourceCell.value;
 
   if (value && typeof value === "object" && ("formula" in value || "sharedFormula" in value)) {
-    const formula = sourceCell.formula || value.formula;
+    const formula = safeGetCellFormula(sourceCell) || value.formula;
 
     if (!formula) {
       return value.result ?? null;
@@ -214,11 +222,15 @@ function normalizeSharedFormulas(worksheet) {
     row.eachCell((cell) => {
       const value = cell.value;
 
-      if (!value || typeof value !== "object" || !("sharedFormula" in value)) {
+      if (
+        !value ||
+        typeof value !== "object" ||
+        (!("formula" in value) && !("sharedFormula" in value))
+      ) {
         return;
       }
 
-      const formula = cell.formula;
+      const formula = safeGetCellFormula(cell);
       cell.value = formula ? { formula, result: clone(value.result) } : value.result ?? null;
     });
   });
