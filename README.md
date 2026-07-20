@@ -9,6 +9,12 @@
 - [圖文使用說明](docs/使用說明.md)
 - [Word 版使用說明](docs/Excel報名資料自動填寫工具_使用說明.docx)
 
+## 使用者執行需求
+
+使用者只需要執行打包後的 `Excel自動填寫工具-0.1.0.exe`，不需要另外安裝 Node.js、Vite 或 Electron。
+
+Node.js、Vite 和 Electron 套件只會在開發、測試或重新打包時使用。
+
 ## 開發啟動
 
 ```bash

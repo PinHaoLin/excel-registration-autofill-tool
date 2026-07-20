@@ -252,6 +252,16 @@ def build_document():
         ],
         [Inches(1.7), Inches(4.8)],
     )
+    add_note_box(
+        doc,
+        "執行需求",
+        [
+            "使用者只需要執行打包後的 Excel自動填寫工具-0.1.0.exe。",
+            "一般使用者不需要另外安裝 Node.js、Vite 或 Electron；這些工具只會在開發、測試或重新打包時使用。",
+        ],
+        fill=LIGHT_GRAY,
+        border=BORDER,
+    )
 
     add_heading(doc, "3. 第一次開啟時的不明來源提醒")
     add_note_box(
