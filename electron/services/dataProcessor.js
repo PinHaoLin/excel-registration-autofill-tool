@@ -224,6 +224,10 @@ function normalizeSharedFormulas(worksheet) {
   });
 }
 
+function requestWorkbookRecalculation(workbook) {
+  workbook.calcProperties.fullCalcOnLoad = true;
+}
+
 function copyRowTemplate(sourceRow, targetRow) {
   targetRow.height = sourceRow.height;
 
@@ -317,6 +321,7 @@ async function addRegistrationToWorkbook(payload = {}) {
 
   removeConditionalFormatting(worksheet);
   normalizeSharedFormulas(worksheet);
+  requestWorkbookRecalculation(workbook);
 
   await workbook.xlsx.writeFile(workbookPath);
 

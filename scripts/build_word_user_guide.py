@@ -345,12 +345,22 @@ def build_document():
 
     add_heading(doc, "8. 分期或多項目資料")
     add_paragraph(doc, "如果文字中包含多個課程項目或分期資訊，工具可能會拆成多筆 Excel 資料列。")
-    add_bullet(doc, "一般單筆付款：通常產生 1 筆資料。")
-    add_bullet(doc, "多項目付款：可能依項目拆成多筆資料。")
+    add_bullet(doc, "一般單筆付款：通常產生 1 筆資料，收款金額等於課程金額。")
+    add_bullet(doc, "多項目付款：可能依項目拆成多筆資料，每筆收款金額等於該筆課程金額。")
     add_bullet(doc, "分期或訂金：第一筆會帶入已付金額，其餘筆數可能保留空白付款金額。")
     add_paragraph(doc, "寫入前請一定檢查右側預覽，確認筆數和金額符合你的期待。")
 
-    add_heading(doc, "9. 常見問題與處理方式")
+    add_heading(doc, "9. Excel 公式更新", level=2)
+    add_paragraph(
+        doc,
+        "工具寫入資料後，會要求 Excel 在開啟檔案時重新計算公式欄位，例如分期差額。"
+    )
+    add_paragraph(
+        doc,
+        "如果 Excel 開啟後仍看到舊值，請確認 Excel 的計算選項不是手動模式，或按一次「公式」中的「立即計算」。"
+    )
+
+    add_heading(doc, "10. 常見問題與處理方式")
     add_table(
         doc,
         ["狀況", "可能原因", "處理方式"],
@@ -365,7 +375,7 @@ def build_document():
         [Inches(1.6), Inches(2.15), Inches(2.75)],
     )
 
-    add_heading(doc, "10. 安全使用建議")
+    add_heading(doc, "11. 安全使用建議")
     for text in [
         "正式資料第一次使用前，先複製一份 Excel 備份。",
         "每次寫入前先看右側預覽，不要只依賴原始文字。",

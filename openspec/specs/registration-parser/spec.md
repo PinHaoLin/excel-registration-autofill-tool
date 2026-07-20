@@ -21,3 +21,7 @@ When `總金額` includes parenthesized item details, itemized course amounts SH
 
 ### Preview Consistency
 The preview received amount SHALL use the corrected total amount when the record is not an installment record.
+
+When a non-installment record is split into multiple itemized entries, each entry's received amount SHALL equal that entry's course amount.
+
+When an installment record is split into multiple entries, only the first entry SHALL receive the installment payment amount; later entries SHALL keep the received amount blank.

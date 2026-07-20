@@ -150,7 +150,7 @@ function parseRegistrationText(text) {
   const entries = lineItems.map((item, index) => ({
     name,
     sessionName: index === 0 ? sessionName : item.label,
-    amount: isInstallment ? (index === 0 ? installmentAmount : "") : totalAmount,
+    amount: isInstallment ? (index === 0 ? installmentAmount : "") : item.amount || totalAmount,
     courseTotal: item.amount || totalAmount,
     transferLastFive: paymentCode,
     paymentDate,
