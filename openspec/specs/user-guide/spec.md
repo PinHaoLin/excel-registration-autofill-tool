@@ -23,6 +23,7 @@ The user guide SHALL explain:
 - Troubleshooting and safe usage notes.
 - Windows unknown-source or unsigned publisher prompts, including the need to confirm the file source before allowing execution.
 - Packaged executable runtime requirements, including that end users do not need Node.js, Vite, or Electron installed.
+- The current packaged executable name, currently `Excel自動填寫工具-0.1.1.exe`.
 
 ### Visual Aids
 The user guide SHALL include visual aids such as diagrams or tables to help users understand the workflow, interface areas, and Excel output mapping.

@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from docx import Document
@@ -11,6 +12,8 @@ from docx.shared import Inches, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs" / "Excel報名資料自動填寫工具_使用說明.docx"
+PACKAGE = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+EXECUTABLE_NAME = f"Excel自動填寫工具-{PACKAGE['version']}.exe"
 
 BLUE = "2E74B5"
 DARK_BLUE = "1F4D78"
@@ -256,7 +259,7 @@ def build_document():
         doc,
         "執行需求",
         [
-            "使用者只需要執行打包後的 Excel自動填寫工具-0.1.0.exe。",
+            f"使用者只需要執行打包後的 {EXECUTABLE_NAME}。",
             "一般使用者不需要另外安裝 Node.js、Vite 或 Electron；這些工具只會在開發、測試或重新打包時使用。",
         ],
         fill=LIGHT_GRAY,

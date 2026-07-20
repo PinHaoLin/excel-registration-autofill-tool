@@ -13,4 +13,4 @@ Run:
 - `npm run build`.
 - `npm run dist`.
 
-The final packaged executable should remain in `release/Excel自動填寫工具-0.1.0.exe`.
+The final packaged executable for this historical change was `release/Excel自動填寫工具-0.1.0.exe`; later release-version changes may produce newer artifact names.
