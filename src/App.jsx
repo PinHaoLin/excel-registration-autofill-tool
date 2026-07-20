@@ -22,6 +22,13 @@ function normalizeMoney(value) {
   return Number.isFinite(amount) ? String(amount) : "";
 }
 
+function parseFirstMoney(value) {
+  const text = String(value ?? "");
+  const match = text.match(/(?:NT\$|NTD|\$)?\s*(-?\d{1,3}(?:,\d{3})+|-?\d+)(?:\.\d+)?/i);
+
+  return match ? normalizeMoney(match[0]) : "";
+}
+
 function getField(text, labels) {
   for (const label of labels) {
     const pattern = new RegExp(`${label}\\s*[:：]\\s*([^\\n\\r]+)`, "i");
@@ -128,10 +135,10 @@ function parseRegistrationText(text) {
   const name = getField(normalized, ["姓名"]) || firstLineData.name;
   const sessionName = getField(normalized, ["報名場次", "场次"]) || firstLineData.sessionName;
   const totalLine = getField(normalized, ["總金額", "总金额"]);
-  const installmentAmount = normalizeMoney(getField(normalized, ["第一期金額", "第一期金额", "第一期"]));
+  const installmentAmount = parseFirstMoney(getField(normalized, ["第一期金額", "第一期金额", "第一期"]));
   const cardLastFour = getField(normalized, ["刷卡末四碼", "刷卡末四码"]);
   const transferLastFive = getField(normalized, ["匯款末五碼", "匯款末五码", "匯款帳號末五碼"]);
-  const totalAmount = normalizeMoney(totalLine);
+  const totalAmount = parseFirstMoney(totalLine);
   const isCard = Boolean(cardLastFour);
   const paymentMethod = isCard ? "刷卡" : "匯款";
   const paymentDate = isCard ? todayText() : parseRemittanceDate(normalized);
